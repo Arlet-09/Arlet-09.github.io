@@ -3,82 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Maquetado académico administrativo inspirado en un visualizador institucional.">
-  <title>Panel Institucional | Seguimiento Académico</title>
+  <meta name="description" content="UT-GEST: plataforma demostrativa para la gestión y seguimiento académico.">
+  <title>UT-GEST | Gestión y Seguimiento Académico</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#8b2cff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
 <body>
   <div class="app-shell">
     <header class="topbar">
-<a class="brand" href="#perfil" data-section="perfil"
-   aria-label="UT-GEST, Gestión y Seguimiento Académico">
+      <a class="brand" href="#perfil" data-section="perfil" aria-label="UT-GEST, Gestión y Seguimiento Académico">
+        <span class="brand-mark" aria-hidden="true">UT</span>
+        <span class="brand-copy">
+          <strong>UT-GEST</strong>
+          <small>Gestión y Seguimiento Académico</small>
+        </span>
+      </a>
 
-    <span class="brand-mark" aria-hidden="true">UT</span>
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-link active" data-section="perfil">Inicio</button>
+        <button class="nav-link" data-section="datos">Datos</button>
+        <button class="nav-link" data-section="evidencias">Evidencias</button>
+        <button class="nav-link" data-section="graficos">Indicadores</button>
+        <button class="nav-link" data-section="gestion">Gestión</button>
+        <button class="nav-link" data-section="recursos">Recursos</button>
+      </nav>
 
-    <span class="brand-copy">
-        <strong>UT-GEST</strong>
-        <small>Gestión y Seguimiento Académico</small>
-    </span>
-
-</a>
-
-<nav class="main-nav" aria-label="Navegación principal">
-    <button class="nav-link active" data-section="perfil">
-        Inicio
-    </button>
-
-    <button class="nav-link" data-section="datos">
-        Datos
-    </button>
-
-    <button class="nav-link" data-section="evidencias">
-        Evidencias
-    </button>
-
-    <button class="nav-link" data-section="graficos">
-        Indicadores
-    </button>
-
-    <button class="nav-link" data-section="gestion">
-        Gestión
-    </button>
-</nav>
-
-<div class="topbar-actions">
-
-    <span class="period-label">
-        Periodo 2026 · Mayo–Agosto
-    </span>
-
-    <span class="status-dot"></span>
-
-    <span class="status-text">
-        Sistema activo
-    </span>
-
-    <button
-        class="icon-btn"
-        id="themeToggle"
-        title="Cambiar modo de visualización"
-        aria-label="Cambiar modo de visualización">
-        ◐
-    </button>
-
-</div>
+      <div class="topbar-actions">
+        <span class="period-label">Periodo 2026 · Mayo–Agosto</span>
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="status-text">Sistema activo</span>
+        <button class="icon-btn" id="themeToggle" title="Cambiar modo de visualización" aria-label="Cambiar modo de visualización">◐</button>
+      </div>
     </header>
 
     <main class="main-content">
       <section id="perfil" class="page-section active-section">
         <div class="hero-panel">
           <div>
-            <p class="eyebrow">PANEL ADMINISTRATIVO</p>
-            <h1>Perfil institucional</h1>
-            <p class="hero-text">Consulta general, avance de metas y acciones del periodo académico.</p>
+            <p class="eyebrow">PANEL ADMINISTRATIVO · UT-GEST</p>
+            <h1>Gestión y seguimiento académico</h1>
+            <p class="hero-text">Centraliza indicadores, evidencias y avances académicos desde una sola plataforma.</p>
           </div>
           <div class="profile-badge">
             <div class="avatar">IA</div>
@@ -141,8 +111,8 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">MÓDULO 01</p>
-            <h1>Cargar datos</h1>
-            <p>Registra indicadores y metas por componente y periodo.</p>
+            <h1>Registro de indicadores</h1>
+            <p>Registra metas, indicadores y avances por componente y periodo.</p>
           </div>
           <span class="tag">Borrador</span>
         </div>
@@ -195,8 +165,8 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">MÓDULO 02</p>
-            <h1>Cargar evidencias</h1>
-            <p>Adjunta documentos simulados para respaldar los avances registrados.</p>
+            <h1>Gestión de evidencias</h1>
+            <p>Registra documentos y recursos que respaldan los avances académicos.</p>
           </div>
           <span class="tag">12 pendientes</span>
         </div>
@@ -247,8 +217,8 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">MÓDULO 03</p>
-            <h1>Visualizador de gráficos</h1>
-            <p>Explora avances programados y realizados mediante información simulada.</p>
+            <h1>Indicadores y avance</h1>
+            <p>Consulta el cumplimiento de metas mediante gráficos de seguimiento.</p>
           </div>
           <button id="printCharts" class="secondary-btn">Exportar / imprimir</button>
         </div>
@@ -285,7 +255,7 @@
         <div class="section-heading">
           <div>
             <p class="eyebrow">MÓDULO 04</p>
-            <h1>Gestión de datos</h1>
+            <h1>Administración de registros</h1>
             <p>Administra registros, periodos y acciones disponibles para cada elemento.</p>
           </div>
           <button id="addRow" class="primary-btn">+ Nuevo registro</button>
@@ -303,11 +273,60 @@
           </table>
         </div>
       </section>
+
+      <section id="recursos" class="page-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">RECURSOS</p>
+            <h1>Recursos de UT-GEST</h1>
+            <p>Contenido multimedia relacionado con la gestión y el seguimiento académico.</p>
+          </div>
+          <span class="tag">Material demostrativo</span>
+        </div>
+
+        <div class="media-grid">
+          <article class="media-card panel">
+            <div class="media-header">
+              <p class="eyebrow">IMAGEN</p>
+              <h2>Panel de gestión académica</h2>
+            </div>
+            <img
+              src="./assets/ut-gest-academico.svg"
+              alt="Ilustración del panel UT-GEST para gestionar indicadores, evidencias y seguimiento académico"
+              class="media-image">
+            <p>
+              Vista conceptual de UT-GEST y de los módulos que integran el registro,
+              seguimiento de indicadores y gestión de evidencias académicas.
+            </p>
+          </article>
+
+          <article class="media-card panel">
+            <div class="media-header">
+              <p class="eyebrow">VIDEO</p>
+              <h2>Demostración del sistema</h2>
+            </div>
+            <div class="video-container">
+              <video
+                controls
+                preload="metadata"
+                poster="./assets/ut-gest-poster.svg"
+                aria-label="Video demostrativo de UT-GEST">
+                <source src="./assets/ut-gest-demo.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video HTML5.
+              </video>
+            </div>
+            <p>
+              Video demostrativo del flujo general: registro de datos, evidencias,
+              indicadores y administración de registros.
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="footer">
-      <div><strong>Panel Institucional</strong><span>Maquetado académico demostrativo</span></div>
-      <div><span>© 2026 · Datos simulados · No es un sistema oficial</span><a href="#perfil" data-section="perfil">Volver arriba ↑</a></div>
+      <div><strong>UT-GEST</strong><span>Gestión y Seguimiento Académico</span></div>
+      <div><span>© 2026 · Sistema demostrativo · Datos simulados</span><a href="#perfil" data-section="perfil">Volver arriba ↑</a></div>
     </footer>
   </div>
 

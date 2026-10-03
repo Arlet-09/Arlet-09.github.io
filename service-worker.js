@@ -1,99 +1,72 @@
+const CACHE_NAME = 'ut-gest-v2';
 
-const CACHE_NAME = 'panel-institucional-v1';
-
-const ARCHIVOS_PRECACHE = [
+const LOCAL_ASSETS = [
   './',
   './index.html',
   './styles.css',
   './script.js',
-  './manifest.json'
+  './manifest.json',
+  './assets/ut-gest-academico.svg',
+  './assets/ut-gest-poster.svg',
+  './assets/ut-gest-demo.mp4',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
-// Instalación del Service Worker
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(ARCHIVOS_PRECACHE);
-      })
-      .then(() => {
-        return self.skipWaiting();
-      })
+      .then(cache => cache.addAll(LOCAL_ASSETS))
+      .then(() => self.skipWaiting())
   );
 });
 
-// Activación del Service Worker
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
-      .then(cacheNames => {
-        return Promise.all(
-          cacheNames
-            .filter(cacheName => cacheName !== CACHE_NAME)
-            .map(cacheName => caches.delete(cacheName))
-        );
-      })
-      .then(() => {
-        return self.clients.claim();
-      })
+      .then(cacheNames => Promise.all(
+        cacheNames
+          .filter(cacheName => cacheName !== CACHE_NAME)
+          .map(cacheName => caches.delete(cacheName))
+      ))
+      .then(() => self.clients.claim())
   );
 });
 
-// Interceptar solicitudes
 self.addEventListener('fetch', event => {
   const request = event.request;
 
-  // Solo procesar solicitudes GET
-  if (request.method !== 'GET') {
-    return;
-  }
+  if (request.method !== 'GET') return;
 
-  // Navegación: primero intenta Internet y si falla usa index.html
+  // Navegación: red primero; si no hay conexión, usar index.html.
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
         .then(response => {
           const responseClone = response.clone();
-
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(request, responseClone);
-          });
-
+          caches.open(CACHE_NAME).then(cache => cache.put(request, responseClone));
           return response;
         })
-        .catch(() => {
-          return caches.match('./index.html');
-        })
+        .catch(() => caches.match('./index.html'))
     );
-
     return;
   }
 
-  // Archivos y recursos: primero caché y después Internet
+  // Recursos locales y recursos externos ya cacheados.
   event.respondWith(
     caches.match(request)
       .then(cachedResponse => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
+        if (cachedResponse) return cachedResponse;
 
         return fetch(request)
           .then(response => {
-            // Guardar solamente respuestas válidas
-            if (response && response.status === 200) {
+            if (response && (response.status === 200 || response.type === 'opaque')) {
               const responseClone = response.clone();
-
-              caches.open(CACHE_NAME).then(cache => {
-                cache.put(request, responseClone);
-              });
+              caches.open(CACHE_NAME).then(cache => cache.put(request, responseClone));
             }
-
             return response;
           });
       })
-      .catch(() => {
-        return caches.match('./index.html');
-      })
+      .catch(() => caches.match('./index.html'))
   );
 });
-

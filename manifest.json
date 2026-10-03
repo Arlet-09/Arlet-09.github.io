@@ -1,20 +1,16 @@
 {
-  "name": "Panel Institucional | Seguimiento Académico",
-  "short_name": "Panel Institucional",
-  "description": "Panel institucional para seguimiento académico.",
+  "name": "UT-GEST | Gestión y Seguimiento Académico",
+  "short_name": "UT-GEST",
+  "description": "Plataforma demostrativa para la gestión, seguimiento de indicadores y evidencias académicas.",
   "lang": "es-MX",
   "dir": "ltr",
-
   "start_url": "./index.html",
   "scope": "./",
   "id": "./index.html",
-
   "display": "standalone",
   "orientation": "any",
-
   "theme_color": "#8b2cff",
-  "background_color": "#120817",
-
+  "background_color": "#07070a",
   "icons": [
     {
       "src": "./icons/icon-192.png",

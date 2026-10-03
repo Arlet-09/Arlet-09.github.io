@@ -109,7 +109,7 @@ function makeCharts(multiplier = 1) {
     type: 'bar',
     data: { labels: baseData.labels, datasets: [
       { label: 'Programado', data: baseData.values.finProgramado.map(v => v * multiplier), backgroundColor: '#8b2cff', ...common },
-      { label: 'Realizado', data: baseData.values.finRealizado.map(v => v * multiplier), backgroundColor: '#ff2c9c', ...common }
+      { label: 'Realizado', data: baseData.values.finRealizado.map(v => v * multiplier), backgroundColor: '#a64cff', ...common }
     ] }, options: axisOptions(140)
   }));
 
@@ -117,19 +117,19 @@ function makeCharts(multiplier = 1) {
     type: 'bar',
     data: { labels: baseData.labels, datasets: [
       { label: 'Programado', data: baseData.values.purposeProgramado.map(v => v * multiplier), backgroundColor: '#8b2cff', ...common },
-      { label: 'Realizado', data: baseData.values.purposeRealizado.map(v => v * multiplier), backgroundColor: '#ff2c9c', ...common }
+      { label: 'Realizado', data: baseData.values.purposeRealizado.map(v => v * multiplier), backgroundColor: '#a64cff', ...common }
     ] }, options: axisOptions(120)
   }));
 
   chartInstances.push(new Chart(document.getElementById('componentChart'), {
     type: 'bar',
-    data: { labels: ['C1', 'C2', 'C3'], datasets: [{ label: 'Avance %', data: baseData.values.components.map(v => Math.round(v * multiplier)), backgroundColor: '#c832ff', ...common }] },
+    data: { labels: ['C1', 'C2', 'C3'], datasets: [{ label: 'Avance %', data: baseData.values.components.map(v => Math.round(v * multiplier)), backgroundColor: '#a64cff', ...common }] },
     options: axisOptions(100)
   }));
 
   chartInstances.push(new Chart(document.getElementById('activityChart'), {
     type: 'line',
-    data: { labels: baseData.labels, datasets: [{ label: 'Avance %', data: baseData.values.activities.map(v => Math.round(v * multiplier)), borderColor: '#ff5fbe', backgroundColor: 'rgba(255,95,190,.14)', fill: true, tension: .35 }] },
+    data: { labels: baseData.labels, datasets: [{ label: 'Avance %', data: baseData.values.activities.map(v => Math.round(v * multiplier)), borderColor: '#cf9bff', backgroundColor: 'rgba(207,155,255,.14)', fill: true, tension: .35 }] },
     options: axisOptions(100)
   }));
 }
@@ -196,20 +196,15 @@ document.getElementById('managementTable').addEventListener('click', event => {
 
 makeCharts();
 
+// Registro del Service Worker.
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js')
       .then(registration => {
-        console.log(
-          'Service Worker registrado correctamente:',
-          registration.scope
-        );
+        console.log('Service Worker registrado correctamente:', registration.scope);
       })
       .catch(error => {
-        console.error(
-          'Error al registrar el Service Worker:',
-          error
-        );
+        console.error('Error al registrar el Service Worker:', error);
       });
   });
 }

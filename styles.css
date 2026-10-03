@@ -1,15 +1,15 @@
 :root {
-  --bg: #120817;
-  --bg-2: #210b2c;
-  --panel: rgba(42, 12, 52, .80);
-  --panel-strong: rgba(54, 12, 69, .92);
+  --bg: #07070a;
+  --bg-2: #120817;
+  --panel: rgba(15, 15, 20, .88);
+  --panel-strong: #111116;
   --primary: #8b2cff;
-  --primary-2: #d51cff;
-  --accent: #ff2c9c;
-  --accent-2: #ff5fbe;
+  --primary-2: #a64cff;
+  --accent: #b84cff;
+  --accent-2: #cf9bff;
   --text: #f9f2ff;
   --muted: #cdb8d8;
-  --border: rgba(236, 176, 255, .20);
+  --border: rgba(167, 111, 255, .24);
   --success: #56e6b0;
   --warning: #ffc14d;
   --danger: #ff5d7a;
@@ -23,9 +23,9 @@ body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at 12% 8%, rgba(213,28,255,.21), transparent 28%),
-    radial-gradient(circle at 92% 16%, rgba(255,44,156,.17), transparent 24%),
-    linear-gradient(140deg, #0e0613 0%, #22082c 49%, #0d0612 100%);
+    radial-gradient(circle at 12% 8%, rgba(139,44,255,.18), transparent 26%),
+    radial-gradient(circle at 92% 16%, rgba(166,76,255,.11), transparent 22%),
+    linear-gradient(140deg, #050507 0%, #0b0910 52%, #160b1d 100%);
   min-height: 100vh;
 }
 
@@ -55,7 +55,7 @@ a { color: inherit; text-decoration: none; }
   gap: 22px;
   padding: 12px 4vw;
   min-height: 76px;
-  background: linear-gradient(90deg, rgba(52, 7, 69, .95), rgba(132, 8, 92, .92));
+  background: linear-gradient(90deg, rgba(5, 5, 8, .98), rgba(24, 10, 35, .97));
   border-bottom: 1px solid rgba(255,255,255,.14);
   box-shadow: 0 12px 32px rgba(0,0,0,.22);
   backdrop-filter: blur(18px);
@@ -114,21 +114,6 @@ p { color: var(--muted); line-height: 1.6; }
 .info-list span { color: var(--muted); font-size: 12px; }
 .info-list strong { font-size: 12px; }
 .quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
-.multimedia-heading { margin-top: 28px; margin-bottom: 16px; }
-.multimedia-grid { display: grid; grid-template-columns: .9fr 1.1fr 1.1fr; gap: 16px; }
-.media-text-card, .media-image-card, .media-video-card { overflow: hidden; }
-.media-text-card { background: linear-gradient(145deg, rgba(73, 16, 102, .86), rgba(194, 20, 132, .20)); }
-.media-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 12px; margin-bottom: 14px; background: linear-gradient(135deg, var(--primary), var(--accent)); font-size: 20px; font-weight: 800; }
-.media-text-card h2 { margin-bottom: 8px; }
-.media-text-card p { margin: 0; font-size: 12px; }
-.media-points { display: grid; gap: 8px; margin-top: 16px; }
-.media-points span { padding: 9px 10px; border-radius: 10px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.08); color: #f3e8f7; font-size: 10px; }
-.media-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
-.media-header h2 { font-size: 16px; }
-.web-image { display: block; width: 100%; height: 250px; object-fit: cover; border-radius: 14px; border: 1px solid rgba(255,255,255,.10); }
-.video-wrapper { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 14px; background: #09030c; border: 1px solid rgba(255,255,255,.10); }
-.video-wrapper iframe { width: 100%; height: 100%; border: 0; display: block; }
-.media-caption { display: block; color: var(--muted); font-size: 10px; line-height: 1.45; margin-top: 8px; }
 .action-btn { text-align: left; padding: 13px; color: #fff; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.07); border-radius: 12px; font-size: 12px; font-weight: 700; transition: .2s; }
 .action-btn:hover { border-color: rgba(255,92,190,.55); background: rgba(255,44,156,.12); transform: translateY(-1px); }
 
@@ -185,6 +170,50 @@ textarea { resize: vertical; }
 .table-btn:hover { background: rgba(255,255,255,.10); }
 .table-btn.delete { color: #ffb6c5; }
 
+/* ================================
+   CONTENIDO MULTIMEDIA
+================================ */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.media-card {
+  overflow: hidden;
+}
+.media-header {
+  margin-bottom: 16px;
+}
+.media-header h2 {
+  margin-top: 6px;
+}
+.media-image {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #050507;
+}
+.video-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: #050507;
+}
+.video-container video {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+}
+.period-label {
+  color: #bfaeca;
+  font-size: 10px;
+  padding-right: 6px;
+}
+
 .footer { display: flex; justify-content: space-between; gap: 20px; padding: 22px 4vw; color: #b998bf; background: rgba(8,2,12,.52); border-top: 1px solid rgba(255,255,255,.09); font-size: 11px; }
 .footer div { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
 .footer strong { color: #f5eafd; }
@@ -202,7 +231,7 @@ textarea { resize: vertical; }
 @media (max-width: 980px) {
   .topbar { flex-wrap: wrap; padding: 12px 18px; }
   .main-nav { order: 3; width: 100%; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-  .content-grid, .two-thirds, .charts-grid, .multimedia-grid { grid-template-columns: 1fr; }
+  .content-grid, .two-thirds, .charts-grid, .media-grid { grid-template-columns: 1fr; }
   .filter-bar { grid-template-columns: 1fr 1fr; }
   .chart-summary { text-align: left; }
 }
@@ -212,8 +241,18 @@ textarea { resize: vertical; }
   .profile-badge { width: 100%; }
   .grid-3, .form-grid, .filter-bar { grid-template-columns: 1fr; }
   .topbar-actions { display: none; }
+  .period-label { display: none; }
   .brand { min-width: 0; }
   .status-dot { display: none; }
   .quick-actions { grid-template-columns: 1fr; }
   .footer { flex-direction: column; }
+}
+
+
+@media (max-width: 480px) {
+  .main-content { width: calc(100% - 14px); }
+  .panel { padding: 16px; }
+  .media-image { height: 210px; }
+  .video-container video { max-height: 250px; }
+  .primary-btn, .secondary-btn { width: 100%; }
 }
